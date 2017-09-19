@@ -1,5 +1,5 @@
 # WDL-pipelines
-Stockpile of WDL pipelines for development and testing
+Stockpile of [WDL](https://software.broadinstitute.org/wdl/) pipelines for development and testing
 
 ### Needs description
 Standalone methods for data processing which can be replicated easily on
