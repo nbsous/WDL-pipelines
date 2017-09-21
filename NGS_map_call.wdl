@@ -18,10 +18,9 @@ task detectAvailableBamFiles {
   String dbPath
   command {
     Rscript NGS_map_call_0.1/resources/${bamDetector} ${bamDirectory} ${dbPath}
-    NewlyAdded=sqlite3 ${dbPath} 'SELECT BamFilename FROM InputFiles WHERE ProcessStatus LIKE "Queued"'
+    sqlite3 ${dbPath} 'SELECT BamFilename FROM InputFiles WHERE ProcessStatus LIKE "Queued"'
   }
   output {
-    String [Array] "${NewlyAdded}"
-
+    Array[String] fileList = read_lines(stdout())
   }
 }

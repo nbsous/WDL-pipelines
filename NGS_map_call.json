@@ -1,0 +1,5 @@
+{
+  "NGS_map_call.db_path": "String",
+  "NGS_map_call.bam_detector_script": "String",
+  "NGS_map_call.bam_file_repo": "String"
+}
