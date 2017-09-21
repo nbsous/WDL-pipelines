@@ -1,32 +1,27 @@
 workflow NGS_map_call {
   String bam_file_repo
-  String write_output_path
+  String db_path
   String bam_detector_script
 
-
-  call listAvailableBamFiles {
+  call detectAvailableBamFiles {
     input:
       bamDirectory = bam_file_repo,
-      outputPath = write_output_path
+      dbPath = db_path,
       bamDetector = bam_detector_script
   }
 }
 
-
-
-####### TASKS #########
-
-
-### Find all bam files in working directory and write list to output file.
-task listAvailableBamFiles {
+### Find all bam files in bam repo and add with status "queued" in log DB
+task detectAvailableBamFiles {
+  String bamDetector
   String bamDirectory
-  String outputPath
-
+  String dbPath
   command {
-  Rscript resources/"${bamDetector}" "${bamDirectory}" "${outputPath}"
-
+    Rscript NGS_map_call_0.1/resources/${bamDetector} ${bamDirectory} ${dbPath}
+    NewlyAdded=sqlite3 ${dbPath} 'SELECT BamFilename FROM InputFiles WHERE ProcessStatus LIKE "Queued"'
   }
   output {
-	 File outputFile = "${outputPath}"
+    String [Array] "${NewlyAdded}"
+
   }
 }
