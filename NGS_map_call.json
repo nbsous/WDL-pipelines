@@ -1,5 +1,5 @@
 {
-  "NGS_map_call.db_path": "String",
-  "NGS_map_call.bam_detector_script": "String",
-  "NGS_map_call.bam_file_repo": "String"
+  "NGS_map_call.db_path": "NGS_map_call_0.1/logs/logs.sqlite3",
+  "NGS_map_call.bam_detector_script": "resources/findNewBams.R",
+  "NGS_map_call.bam_file_repo": "BAM_REPO"
 }

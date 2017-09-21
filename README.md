@@ -8,3 +8,7 @@ multiple platforms including the University of Oslo Sensitive Data Services
 which are isolated from the internet.
 
 ## NGS_map_call_0.1
+
+_Important note:_ when specifying paths to files in the .JSON config file, use of absolute
+paths saves a great deal of pain, since cromwell runs within an obscure directory
+structure.
